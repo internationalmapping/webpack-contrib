@@ -11,12 +11,29 @@
     "url": "https://github.com/dojo/webpack-contrib/issues"
   },
   "license": "(BSD-3-Clause OR Apache-2.0)",
-  "main": "main.js",
+  "type": "commonjs",
+  "types": "dist/cjs/src/main.d.ts",
+  "main": "dist/cjs/src/main.js",
+  "module": "dist/cjs/src/main.js",
+  "browser": "dist/cjs/src/main.js",
+  "unpkg": "dist/cjs/src/main.js",
   "files": [
-    "dist",
+    "dist/**",
     "src",
     "typings.json"
   ],
+  "exports": {
+    "./*": {
+      "types": "./dist/cjs/src/index.d.ts",
+      "import": "./dist/cjs/src/*.ts",
+      "require": "./dist/cjs/src/*.js"
+    },
+    ".": {
+      "types": "./dist/cjs/src/index.d.ts",
+      "import": "./dist/cjs/src/index.ts",
+      "require": "./dist/cjs/src/index.js"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/dojo/webpack-contrib.git"
@@ -43,7 +60,7 @@
     "watch": "run-p watch:ts \"build:static:** -- --watch\""
   },
   "dependencies": {
-    "@dojo/framework": "~8.0.0",
+    "@dojo/framework": "workspace:*",
     "@msgpack/msgpack": "2.3.0",
     "@types/babel-types": "6.25.2",
     "acorn": "7.4.1",
@@ -61,7 +78,7 @@
     "eventsource-polyfill": "0.9.6",
     "express": "4.16.2",
     "filesize": "3.5.11",
-    "filter-css": "0.1.2",
+    "filter-css": "1.0.0",
     "fs-extra": "7.0.0",
     "get-port": "4.0.0",
     "glob": "^7.1.2",
@@ -131,7 +148,7 @@
     "stream-combiner2": "1.1.1",
     "style-loader": "0.23.1",
     "typescript": "~3.8.3",
-    "webpack": "4.43.0"
+    "webpack": "4.47.0"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
